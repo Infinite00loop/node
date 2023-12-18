@@ -23,6 +23,13 @@ app.use('/product',(req,res,next)=>{
     console.log(req.body);
     res.redirect('/');
 });
+app.use('/',(req,res,next)=>{
+    console.log('in another middleware');
+    res.send('<h1>hello from Express</h1>');
+    
+});
+
+
 
 
 
