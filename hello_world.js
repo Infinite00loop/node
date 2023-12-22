@@ -5,6 +5,8 @@ const http=require('http');
 const express = require('express');
 const bodyParser=require('body-parser');
 
+const connectController=require('./controllers/connect');
+
 const app=express();
 
 const adminRoutes=require('./routes/admin');
@@ -18,9 +20,7 @@ app.use('/admin',adminRoutes);
 app.use('/shop',shopRoutes);
 app.use('/contact',contactRoutes);
 
-app.post('/success',(req,res,next)=>{
-    res.send('<h1>Form successfully filled</h1>');
-});
+app.post('/success',connectController.success);
 
 app.use((req,res,next)=>{
     res.status(404).sendFile(path.join(__dirname,'views','404.html'));
